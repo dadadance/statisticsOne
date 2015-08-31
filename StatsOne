@@ -1,0 +1,35 @@
+#Stats One, Lecture 6b
+#Test/re-test reliability analysis, column format
+
+install.packages("psych")
+library(psych)
+
+#Read the data into a dataframe called impact.col
+impact.col<-read.table("supplemental_STATS1.EX.03.COL.TXT", header = T)
+impact.row<-read.table("supplemental_STATS1.EX.03.ROW.TXT", header = T)
+
+#List the names of the variables in the dataframe called impact.col
+names(impact.col)
+names(impact.row)
+
+#Descriptive statistics
+describe(impact.col)
+describe(impact.row)
+
+#Correlations (A&B)
+cor(impact.col$memory.verbal.A, impact.col$memory.verbal.B)
+cor(impact.row$memory.verbal[impact.row$test=="A"], impact.row$memory.verbal[impact.row$test=="B"])
+
+cor(impact.col$memory.visual.A, impact.col$memory.visual.B)
+cor(impact.row$memory.visual[impact.row$test=="A"], impact.row$memory.visual[impact.row$test=="B"])
+
+cor(impact.col$speed.vismotor.A, impact.col$speed.vismotor.B)
+cor(impact.row$speed.vismotor[impact.row$test=="A"], impact.row$speed.vismotor[impact.row$test=="B"])
+
+cor(impact.col$speed.general.A, impact.col$speed.general.B)
+cor(impact.row$speed.general[impact.row$test=="A"], impact.row$speed.general[impact.row$test=="B"])
+
+cor(impact.col$impulse.control.A, impact.col$impulse.control.B)
+cor(impact.row$impulse.control[impact.row$test=="A"], impact.row$impulse.control[impact.row$test=="B"])
+
+describeBy(impact.row, impact.row$test)
